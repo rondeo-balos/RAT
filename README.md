@@ -1,2 +1,3 @@
 # RAT
-RATServer for Android
+RAT for Android
+@author Rondeo Balos
