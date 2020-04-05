@@ -1,12 +1,10 @@
-package rbstyle.server.rat;
+package rbstyle.rat;
 
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.ParseException;
 
 /**
  * 
@@ -53,12 +51,13 @@ public class Server extends RAT{
 		}
 	}
 	
+	@SuppressWarnings("deprecation")
 	public void stopListening() {
 		try {
 			listen = false;
-			for(Socket s : clients)
+			/*for(Socket s : clients)
 				if(!s.isClosed())
-					s.close();
+					s.close();*/
 			clients.clear();
 			listener.close();
 			stop();
@@ -71,12 +70,8 @@ public class Server extends RAT{
 		return clients;
 	}
 	
-	public void send(int index, JSONObject data) throws IOException {
-		send(clients.get(index),data);
-	}
-	
-	public JSONObject receive(int index) throws IOException, ParseException {
-		return receive(clients.get(index));
+	public int connectionsLen() {
+		return clients.size();
 	}
 	
 }
